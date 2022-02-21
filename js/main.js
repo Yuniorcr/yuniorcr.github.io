@@ -13,7 +13,6 @@ function sendData(sentence){
     })
     .then(response => response.json())
     .then(data => {
-                console.log(data);
         if(data.data >0.5){
             prediccion.innerHTML = '';
             prediccion.innerHTML = 
@@ -45,6 +44,13 @@ document.getElementById("btn-start").addEventListener("click", () => {
         lower = data.value.trim().toLowerCase();
         sendData(lower);
         data.value = '';
+        prediccion.innerHTML = `
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border text-info" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+        `;
     }else{
         prediccion.innerHTML = '';
         prediccion.innerHTML = `
@@ -61,6 +67,13 @@ document.getElementById("bullyng").addEventListener("keyup", (event) => {
             lower = data.value.trim().toLowerCase();
             sendData(lower);
             data.value = '';
+            prediccion.innerHTML = `
+            <div class="d-flex justify-content-center">
+                <div class="spinner-border text-info" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+            `;
         }else{
             prediccion.innerHTML = '';
             prediccion.innerHTML = `
